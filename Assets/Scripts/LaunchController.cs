@@ -25,8 +25,12 @@ public class LaunchController : MonoBehaviour
     }
     void LaunchShoot()
     {
+        // instantiates the projectile at the shotpoint of the launcher
         GameObject firedProjectile = Instantiate(projectiles, shotPoint.position, shotPoint.rotation);
+
+        // sets the velocity of the projectile, taking the transform y value and multiplying it by the launchpower
         firedProjectile.GetComponent<Rigidbody>().velocity = shotPoint.transform.up * launchPower;
+        Destroy(firedProjectile, 5f);
     }
   void OnMouseDrag()
     {
